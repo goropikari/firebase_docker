@@ -1,6 +1,6 @@
 FROM public.ecr.aws/docker/library/node:24.14.0-alpine
 
-RUN apk add --no-cache openjdk25-jre bash
+RUN apk add --no-cache openjdk25-jre bash curl
 RUN npm install -g firebase-tools@15.9.1
 
 WORKDIR /app

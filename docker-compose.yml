@@ -10,11 +10,13 @@ services:
       - "9199:9199" # Storage
       - "4400:4400" # Hub
       - "4500:4500" # Logging
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4000"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
     stop_grace_period: 60s
     # We use a tty to allow for better signaling on exit
     tty: true
     # We want to make sure it gracefully handles SIGTERM for export-on-exit
     stop_signal: SIGINT
-
-volumes:
-  firebase_data:
